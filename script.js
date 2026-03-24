@@ -1,0 +1,223 @@
+// ════════════════════════════════════════════
+//  ДАННЫЕ ПРОЕКТОВ
+//  Фото лежат в images/project1/, images/project2/ и т.д.
+//  Имена файлов: 1_1.jpg, 1_2.jpg ... для проекта 1,
+//                2_1.jpg, 2_2.jpg ... для проекта 2, и т.д.
+//  Добавь или убери строки в photos[] если фото больше/меньше.
+// ════════════════════════════════════════════
+const PROJECTS = [
+  {
+    project: 'project1',
+    photos: [
+      'images/project1/1_1.jpg',
+      'images/project1/1_2.jpg',
+      'images/project1/1_3.jpg',
+      'images/project1/1_4.jpg',
+    ]
+  },
+  {
+    project: 'project2',
+    photos: [
+      'images/project2/2_1.jpg',
+      'images/project2/2_2.jpg',
+      'images/project2/2_3.jpg',
+      'images/project2/2_4.jpg',
+    ]
+  },
+  {
+    project: 'project3',
+    photos: [
+      'images/project3/3_1.jpg',
+      'images/project3/3_2.jpg',
+      'images/project3/3_3.jpg',
+      'images/project3/3_4.jpg',
+    ]
+  },
+  {
+    project: 'project4',
+    photos: [
+      'images/project4/4_1.jpg',
+      'images/project4/4_2.jpg',
+      'images/project4/4_3.jpg',
+      'images/project4/4_4.jpg',
+    ]
+  },
+  {
+    project: 'project5',
+    photos: [
+      'images/project5/5_1.jpg',
+      'images/project5/5_2.jpg',
+      'images/project5/5_3.jpg',
+      'images/project5/5_4.jpg',
+    ]
+  },
+  {
+    project: 'project6',
+    photos: [
+      'images/project6/6_1.jpg',
+      'images/project6/6_2.jpg',
+      'images/project6/6_3.jpg',
+      'images/project6/6_4.jpg',
+    ]
+  },
+  {
+    project: 'project7',
+    photos: [
+      'images/project7/7_1.jpg',
+      'images/project7/7_2.jpg',
+      'images/project7/7_3.jpg',
+      'images/project7/7_4.jpg',
+    ]
+  },
+  {
+    project: 'project8',
+    photos: [
+      'images/project8/8_1.jpg',
+      'images/project8/8_2.jpg',
+      'images/project8/8_3.jpg',
+      'images/project8/8_4.jpg',
+    ]
+  },
+];
+
+
+// ════════════════════════════════════════════
+//  ЛАЙТБОКС
+// ════════════════════════════════════════════
+const lightbox   = document.getElementById('lightbox');
+const lbImg      = document.getElementById('lightboxImg');
+const lbClose    = document.getElementById('lightboxClose');
+const lbPrev     = document.getElementById('lightboxPrev');
+const lbNext     = document.getElementById('lightboxNext');
+const lbBackdrop = document.getElementById('lightboxBackdrop');
+const lbThumbs   = document.getElementById('lightboxThumbs');
+
+let currentPhotos = [];
+let currentIndex  = 0;
+
+function openLightbox(projectId, startIndex) {
+  const project = PROJECTS.find(p => p.project === projectId);
+  if (!project || !project.photos.length) return;
+  currentPhotos = project.photos;
+  currentIndex  = startIndex || 0;
+  renderThumbs();
+  showPhoto(currentIndex);
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  lbImg.src = '';
+}
+
+function showPhoto(index) {
+  currentIndex = (index + currentPhotos.length) % currentPhotos.length;
+  lbImg.src = currentPhotos[currentIndex];
+  const thumbs = lbThumbs.querySelectorAll('.lightbox__thumb');
+  thumbs.forEach((t, i) => t.classList.toggle('active', i === currentIndex));
+  if (thumbs[currentIndex]) {
+    thumbs[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+}
+
+function renderThumbs() {
+  lbThumbs.innerHTML = '';
+  currentPhotos.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    img.className = 'lightbox__thumb';
+    img.addEventListener('click', (e) => { e.stopPropagation(); showPhoto(i); });
+    lbThumbs.appendChild(img);
+  });
+}
+
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('click', () => openLightbox(card.dataset.project, 0));
+});
+
+lbClose.addEventListener('click', closeLightbox);
+lbBackdrop.addEventListener('click', closeLightbox);
+lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showPhoto(currentIndex - 1); });
+lbNext.addEventListener('click', (e) => { e.stopPropagation(); showPhoto(currentIndex + 1); });
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'ArrowLeft')  showPhoto(currentIndex - 1);
+  if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
+  if (e.key === 'Escape')     closeLightbox();
+});
+
+// Drag-скролл мышью
+const scroll = document.querySelector('.projects-scroll');
+if (scroll) {
+  let isDown = false, startX, scrollLeft;
+  scroll.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - scroll.offsetLeft; scrollLeft = scroll.scrollLeft; });
+  scroll.addEventListener('mouseleave', () => isDown = false);
+  scroll.addEventListener('mouseup',    () => isDown = false);
+  scroll.addEventListener('mousemove',  e => {
+    if (!isDown) return;
+    e.preventDefault();
+    scroll.scrollLeft = scrollLeft - (e.pageX - scroll.offsetLeft - startX) * 1.5;
+  });
+}
+
+
+// ════════════════════════════════════════════
+//  ПЛАВНОЕ ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ
+// ════════════════════════════════════════════
+document.querySelectorAll(
+  '.section-header, .project-card, .about__img, .about__stats li, .form__field'
+).forEach(el => el.classList.add('reveal'));
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+// ════════════════════════════════════════════
+//  ФОРМА
+// ════════════════════════════════════════════
+const form    = document.getElementById('contactForm');
+const success = document.getElementById('formSuccess');
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.reset();
+    success.classList.add('visible');
+    setTimeout(() => success.classList.remove('visible'), 5000);
+  });
+}
+
+
+// ════════════════════════════════════════════
+//  НАВ — подсветка активной секции
+// ════════════════════════════════════════════
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav__links a');
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.style.color = link.getAttribute('href') === '#' + id ? 'var(--accent)' : '';
+        });
+      }
+    });
+  },
+  { threshold: 0.4 }
+);
+sections.forEach(sec => sectionObserver.observe(sec));

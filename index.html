@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Mounine — Студия дизайна интерьера</title>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV ═══════════════════════════════════ -->
+  <nav class="nav">
+    <a href="#" class="nav__logo">
+      <img src="images/logo.svg" alt="La Mounine" />
+    </a>
+    <ul class="nav__links">
+      <li><a href="#portfolio">Портфолио</a></li>
+      <li><a href="#about">О студии</a></li>
+      <li><a href="#contact">Контакт</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO ══════════════════════════════════ -->
+  <section id="hero" class="hero">
+    <div class="hero__bg-text" aria-hidden="true">INTERIOR</div>
+    <div class="hero__content">
+      <p class="hero__label">Студия дизайна интерьера · Москва</p>
+      <h1 class="hero__title">
+        Пространство,<br />
+        в котором<br />
+        <em>хочется жить</em>
+      </h1>
+      <p class="hero__sub">
+        Создаём интерьеры, отражающие характер<br />
+        и образ жизни каждого клиента.
+      </p>
+      <div class="hero__manifesto">
+        <p>Мы создаём интерьеры, которые говорят за людей.<br />Мы верим в индивидуальность, а не в универсальные решения.</p>
+        <p>Каждый дом — это история, которая уже существует.<br />Наша задача — прочувствовать её и оформить.</p>
+        <p>Цвет — наш главный инструмент.<br />Он отражает личность, помогает почувствовать себя на своём месте.</p>
+        <p>Мы работаем для тех, кто хочет видеть вокруг себя не чужие идеи,<br />а свою собственную историю в цвете и форме.</p>
+        <p class="hero__manifesto-last">Наш дизайн — это диалог с человеком.</p>
+      </div>
+    </div>
+    <div class="hero__line" aria-hidden="true"></div>
+  </section>
+
+  <!-- PORTFOLIO ═════════════════════════════ -->
+  <section id="portfolio" class="portfolio">
+    <header class="section-header">
+      <span class="section-label">02 — Портфолио</span>
+      <h2 class="section-title">Наши<br /><em>работы</em></h2>
+    </header>
+
+    <!--
+      КАК ДОБАВИТЬ ПРОЕКТ:
+      1. Скопируй блок <div class="project-card"> ... </div>
+      2. В data-project укажи уникальное имя (латиницей, без пробелов)
+      3. Замени src="images/..." на путь к обложке
+      4. Заполни подпись внутри <p class="project-card__caption">
+      5. В JS-массиве PROJECTS добавь объект с photos[] и той же caption
+
+      КАК НАПИСАТЬ м²:
+      Используй HTML: м<sup>2</sup>  →  отображается как м²
+    -->
+
+    <div class="projects-scroll">
+
+      <div class="project-card" data-project="project1">
+        <div class="project-card__cover">
+          <img src="images/project1/1_1.jpg" alt="Проект спальни" />
+        </div>
+        <p class="project-card__caption">
+          Проект спальни 22,8 м<sup>2</sup> в загородном доме для девушки.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project2">
+        <div class="project-card__cover">
+          <img src="images/project2/2_1.jpg" alt="Проект кухни-гостиной" />
+        </div>
+        <p class="project-card__caption">
+          Проект кухни-гостиной 42 м<sup>2</sup> в двухуровневой квартире для семьи с тремя детьми.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project3">
+        <div class="project-card__cover">
+          <img src="images/project3/3_1.jpg" alt="Проект гостевого санузла" />
+        </div>
+        <p class="project-card__caption">
+          Проект гостевого санузла 4 м<sup>2</sup> в двухуровневой квартире.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project4">
+        <div class="project-card__cover">
+          <img src="images/project4/4_1.jpg" alt="Проект спальни" />
+        </div>
+        <p class="project-card__caption">
+          Проект спальни 15,5 м<sup>2</sup> в квартире для молодой пары.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project5">
+        <div class="project-card__cover">
+          <img src="images/project5/5_1.jpg" alt="Проект ванной комнаты" />
+        </div>
+        <p class="project-card__caption">
+          Проект ванной комнаты 4,8 м<sup>2</sup> в загородном доме для девочек.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project6">
+        <div class="project-card__cover">
+          <img src="images/project6/6_1.jpg" alt="Проект гостевой комнаты" />
+        </div>
+        <p class="project-card__caption">
+          Проект гостевой комнаты 13,7 м<sup>2</sup> в загородном доме.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project7">
+        <div class="project-card__cover">
+          <img src="images/project7/7_1.jpg" alt="Проект детской комнаты" />
+        </div>
+        <p class="project-card__caption">
+          Проект детской комнаты 16,7 м<sup>2</sup> в загородном доме для маленькой девочки.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project8">
+        <div class="project-card__cover">
+          <img src="images/project8/8_1.jpg" alt="Проект детской комнаты" />
+        </div>
+        <p class="project-card__caption">
+          Проект детской комнаты 19 м<sup>2</sup> в загородном доме для девочки.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+  </section>
+
+  <!-- LIGHTBOX ═══════════════════════════════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+    <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
+    <button class="lightbox__close" id="lightboxClose" aria-label="Закрыть">&#x2715;</button>
+    <button class="lightbox__prev" id="lightboxPrev" aria-label="Предыдущее">&#x2039;</button>
+    <button class="lightbox__next" id="lightboxNext" aria-label="Следующее">&#x203A;</button>
+    <div class="lightbox__stage">
+      <img src="" alt="" id="lightboxImg" />
+    </div>
+    <div class="lightbox__thumbs" id="lightboxThumbs"></div>
+  </div>
+
+  <!-- ABOUT ══════════════════════════════════ -->
+  <section id="about" class="about">
+    <div class="about__text">
+      <header class="section-header">
+        <span class="section-label">03 — О студии</span>
+        <h2 class="section-title">Дизайн,<br />рождённый<br /><em>из деталей</em></h2>
+      </header>
+      <p class="about__desc">
+        La Mounine — студия дизайна интерьера, где каждый проект
+        начинается с внимательного разговора. Мы создаём пространства,
+        которые живут в гармонии с хозяином — функциональные,
+        красивые и по-настоящему личные.
+      </p>
+      <ul class="about__stats">
+        <li><strong>47</strong><span>проектов</span></li>
+        <li><strong>8</strong><span>лет опыта</span></li>
+        <li><strong>3</strong><span>дизайнера</span></li>
+      </ul>
+    </div>
+    <div class="about__img">
+      <!-- <img src="images/team.jpg" alt="Команда La Mounine" /> -->
+      <div class="about__img-placeholder">Фото команды</div>
+    </div>
+  </section>
+
+  <!-- CONTACT ════════════════════════════════ -->
+  <section id="contact" class="contact">
+    <header class="section-header section-header--center">
+      <span class="section-label">04 — Контакт</span>
+      <h2 class="section-title">Обсудим<br /><em>Ваш проект ?</em></h2>
+    </header>
+
+    <form class="form" id="contactForm">
+      <div class="form__row">
+        <div class="form__field">
+          <label for="name">Имя</label>
+          <input type="text" id="name" name="name" placeholder="Ваше имя" required />
+        </div>
+        <div class="form__field">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required />
+        </div>
+      </div>
+      <div class="form__field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Ваш email" />
+      </div>
+
+      <div class="form__checks">
+        <label class="form__check">
+          <input type="checkbox" name="approval" required />
+          <span>Даю согласие на <a href="approval.html" target="_blank">обработку персональных данных</a></span>
+        </label>
+
+        <label class="form__check">
+          <input type="checkbox" name="policy" required />
+          <span>Я соглашаюсь с <a href="policy.html" target="_blank">Политикой конфиденциальности</a></span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn--full">Отправить</button>
+      <p class="form__success" id="formSuccess">Спасибо! Мы свяжемся с вами скоро.</p>
+    </form>
+  </section>
+
+  <!-- SOCIAL ═════════════════════════════════ -->
+  <section class="social">
+    <header class="section-header section-header--center">
+      <span class="section-label">05 — Мы в сети</span>
+      <h2 class="section-title">Следите<br />за <em>нашей работой</em></h2>
+    </header>
+
+    <div class="social__grid">
+
+      <a href="https://www.instagram.com/lamounine/" target="_blank" rel="noopener" class="social__card">
+        <div class="social__qr">
+          <img src="images/qr-instagram.png" alt="QR-код Instagram La Mounine" />
+        </div>
+        <div class="social__info">
+          <svg class="social__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+          <span class="social__name">Instagram</span>
+          <span class="social__handle">@lamounine</span>
+          <span class="social__cta">Открыть профиль ↗</span>
+        </div>
+      </a>
+
+      <a href="https://vk.ru/lamounine_design" target="_blank" rel="noopener" class="social__card">
+        <div class="social__qr">
+          <img src="images/qr-vk.png" alt="QR-код ВКонтакте La Mounine" />
+        </div>
+        <div class="social__info">
+          <svg class="social__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 10c0 3.5 1.8 5.5 5.4 5.5h.6v-2.2c1.4.1 2.5 1 2.9 2.2h1.8c-.5-1.7-1.7-2.7-2.5-3.1.8-.5 1.8-1.6 2-3.4h-1.6c-.4 1.5-1.3 2.4-2.6 2.5V9H11v4.1C9.6 12.7 9.1 11.4 9 10H7z" fill="currentColor"/>
+          </svg>
+          <span class="social__name">ВКонтакте</span>
+          <span class="social__handle">lamounine_design</span>
+          <span class="social__cta">Открыть страницу ↗</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER ═════════════════════════════════ -->
+  <footer class="footer">
+    <a href="#" class="nav__logo footer__logo">
+      <img src="images/logo-mark.svg" alt="La Mounine" />
+    </a>
+    <p class="footer__copy">© 2026 La Mounine. Все права защищены.</p>
+    <div class="footer__links">
+      <a href="https://www.instagram.com/lamounine/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://vk.ru/lamounine_design" target="_blank" rel="noopener">ВКонтакте</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

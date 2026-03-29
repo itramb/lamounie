@@ -115,15 +115,11 @@ const PROJECTS = [
     project: 'project7',
     photos: [
       'images/project7/7_1.jpg',
-      'images/project7/7_2.jpg',
       'images/project7/7_3.jpg',
-      'images/project7/7_4.jpg',
-      'images/project7/7_4.jpg',
       'images/project7/7_5.jpg',
       'images/project7/7_6.jpg',
       'images/project7/7_7.jpg',
       'images/project7/7_8.jpg',
-      'images/project7/7_9.jpg',
       'images/project7/7_10.jpg',
     ]
   },

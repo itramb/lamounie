@@ -59,6 +59,7 @@ const PROJECTS = [
       'images/project1/1_2.jpg',
       'images/project1/1_3.jpg',
       'images/project1/1_4.jpg',
+      'images/project1/1_5.jpg'
     ]
   },
   {
@@ -68,6 +69,7 @@ const PROJECTS = [
       'images/project2/2_2.jpg',
       'images/project2/2_3.jpg',
       'images/project2/2_4.jpg',
+      'images/project2/2_5.jpg'
     ]
   },
   {
@@ -76,7 +78,7 @@ const PROJECTS = [
       'images/project3/3_1.jpg',
       'images/project3/3_2.jpg',
       'images/project3/3_3.jpg',
-      'images/project3/3_4.jpg',
+      'images/project3/3_4.jpg'
     ]
   },
   {
@@ -85,7 +87,7 @@ const PROJECTS = [
       'images/project4/4_1.jpg',
       'images/project4/4_2.jpg',
       'images/project4/4_3.jpg',
-      'images/project4/4_4.jpg',
+      'images/project4/4_4.jpg'
     ]
   },
   {
@@ -95,6 +97,7 @@ const PROJECTS = [
       'images/project5/5_2.jpg',
       'images/project5/5_3.jpg',
       'images/project5/5_4.jpg',
+      'images/project5/5_5.jpg'
     ]
   },
   {
@@ -104,6 +107,8 @@ const PROJECTS = [
       'images/project6/6_2.jpg',
       'images/project6/6_3.jpg',
       'images/project6/6_4.jpg',
+      'images/project6/6_5.jpg',
+      'images/project6/6_6.jpg'
     ]
   },
   {
@@ -113,6 +118,13 @@ const PROJECTS = [
       'images/project7/7_2.jpg',
       'images/project7/7_3.jpg',
       'images/project7/7_4.jpg',
+      'images/project7/7_4.jpg',
+      'images/project7/7_5.jpg',
+      'images/project7/7_6.jpg',
+      'images/project7/7_7.jpg',
+      'images/project7/7_8.jpg',
+      'images/project7/7_9.jpg',
+      'images/project7/7_10.jpg',
     ]
   },
   {
@@ -122,6 +134,8 @@ const PROJECTS = [
       'images/project8/8_2.jpg',
       'images/project8/8_3.jpg',
       'images/project8/8_4.jpg',
+      'images/project8/8_5.jpg',
+      'images/project8/8_6.jpg',
     ]
   },
 ];

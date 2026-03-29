@@ -26,7 +26,6 @@
 
   <!-- HERO ══════════════════════════════════ -->
   <section id="hero" class="hero">
-    <div class="hero__bg-text" aria-hidden="true">INTERIOR</div>
     <div class="hero__content">
       <p class="hero__label">Студия дизайна интерьера · Москва</p>
       <h1 class="hero__title">
@@ -34,15 +33,15 @@
         в котором<br />
         <em>хочется жить</em>
       </h1>
-      <p class="hero__sub">
-        Создаём интерьеры, отражающие характер<br />
-        и образ жизни каждого клиента.
+      <p class="hero__offer">
+        Ирина Трамбовецкая и Елена Храмова —<br />
+        создаём интерьеры с характером
       </p>
+      <a href="#contact" class="btn hero__btn">Обсудить проект</a>
       <div class="hero__manifesto">
         <p>Мы создаём интерьеры, которые говорят за людей.<br />Мы верим в индивидуальность, а не в универсальные решения.</p>
-        <p>Каждый дом — это история, которая уже существует.<br />Наша задача — прочувствовать её и оформить.</p>
-        <p>Цвет — наш главный инструмент.<br />Он отражает личность, помогает почувствовать себя на своём месте.</p>
-        <p>Мы работаем для тех, кто хочет видеть вокруг себя не чужие идеи,<br />а свою собственную историю в цвете и форме.</p>
+        <p>Цвет и форма — наши главные инструменты.<br />Они отражают личность, помогают почувствовать себя на своём месте.</p>
+        <p>Мы работаем для тех, кто хочет видеть вокруг себя свою собственную историю, а не повторение чужой.</p>
         <p class="hero__manifesto-last">Наш дизайн — это диалог с человеком.</p>
       </div>
     </div>
@@ -151,7 +150,52 @@
       </div>
   </section>
 
-  <!-- LIGHTBOX ═══════════════════════════════ -->
+  <!-- FRAGMENTS ══════════════════════════════ -->
+  <section id="fragments" class="fragments">
+    <header class="section-header">
+      <span class="section-label">Реализация</span>
+      <h2 class="section-title">Фрагменты<br /><em>реализации</em></h2>
+    </header>
+
+    <div class="carousel">
+      <button class="carousel__btn carousel__btn--prev" id="carouselPrev" aria-label="Предыдущее">&#x2039;</button>
+      <button class="carousel__btn carousel__btn--next" id="carouselNext" aria-label="Следующее">&#x203A;</button>
+
+      <div class="carousel__track" id="carouselTrack">
+        <!--
+          Как добавить фото:
+          1. Положи файлы в папку images/fragments/
+          2. Раскомментируй <img> и удали <div class="carousel__placeholder">
+        -->
+        <div class="carousel__slide">
+          <!-- <img src="images/fragments/f1.jpg" alt="Фрагмент реализации" /> -->
+          <div class="carousel__placeholder"></div>
+        </div>
+        <div class="carousel__slide">
+          <!-- <img src="images/fragments/f2.jpg" alt="Фрагмент реализации" /> -->
+          <div class="carousel__placeholder"></div>
+        </div>
+        <div class="carousel__slide">
+          <!-- <img src="images/fragments/f3.jpg" alt="Фрагмент реализации" /> -->
+          <div class="carousel__placeholder"></div>
+        </div>
+        <div class="carousel__slide">
+          <!-- <img src="images/fragments/f4.jpg" alt="Фрагмент реализации" /> -->
+          <div class="carousel__placeholder"></div>
+        </div>
+        <div class="carousel__slide">
+          <!-- <img src="images/fragments/f5.jpg" alt="Фрагмент реализации" /> -->
+          <div class="carousel__placeholder"></div>
+        </div>
+        <div class="carousel__slide">
+          <!-- <img src="images/fragments/f6.jpg" alt="Фрагмент реализации" /> -->
+          <div class="carousel__placeholder"></div>
+        </div>
+      </div>
+
+      <div class="carousel__dots" id="carouselDots"></div>
+    </div>
+  </section>
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото">
     <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
     <button class="lightbox__close" id="lightboxClose" aria-label="Закрыть">&#x2715;</button>
@@ -176,11 +220,6 @@
         которые живут в гармонии с хозяином — функциональные,
         красивые и по-настоящему личные.
       </p>
-      <ul class="about__stats">
-        <li><strong>47</strong><span>проектов</span></li>
-        <li><strong>8</strong><span>лет опыта</span></li>
-        <li><strong>3</strong><span>дизайнера</span></li>
-      </ul>
     </div>
     <div class="about__img">
       <!-- <img src="images/team.jpg" alt="Команда La Mounine" /> -->
@@ -190,10 +229,10 @@
 
   <!-- CONTACT ════════════════════════════════ -->
   <section id="contact" class="contact">
-    <header class="section-header section-header--center">
+    <div class="contact__title">
       <span class="section-label">Контакт</span>
       <h2 class="section-title">Обсудим<br /><em>Ваш проект ?</em></h2>
-    </header>
+    </div>
 
     <form class="form" id="contactForm">
       <div class="form__row">
@@ -206,20 +245,33 @@
           <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required />
         </div>
       </div>
+
       <div class="form__field">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Ваш email" />
+        <label>Предпочтительный способ связи</label>
+        <div class="form__contact-ways">
+          <label class="form__way">
+            <input type="radio" name="contact_way" value="telegram" />
+            <span>Telegram</span>
+          </label>
+          <label class="form__way">
+            <input type="radio" name="contact_way" value="whatsapp" />
+            <span>WhatsApp</span>
+          </label>
+          <label class="form__way">
+            <input type="radio" name="contact_way" value="call" />
+            <span>Звонок</span>
+          </label>
+        </div>
       </div>
 
       <div class="form__checks">
         <label class="form__check">
           <input type="checkbox" name="approval" required />
-          <span>Даю согласие на <a href="approval.html" target="_blank">обработку персональных данных</a></span>
+          <span>Даю согласие на<br /><a href="approval.html" target="_blank">обработку персональных данных</a></span>
         </label>
-
         <label class="form__check">
           <input type="checkbox" name="policy" required />
-          <span>Я соглашаюсь с <a href="policy.html" target="_blank">Политикой конфиденциальности</a></span>
+          <span>Я соглашаюсь с<br /><a href="policy.html" target="_blank">Политикой конфиденциальности</a></span>
         </label>
       </div>
 
@@ -230,7 +282,7 @@
 
   <!-- SOCIAL ═════════════════════════════════ -->
   <section class="social">
-    <header class="section-header section-header--center">
+    <header class="section-header">
       <span class="section-label">Мы в сети</span>
       <h2 class="section-title">Следите<br />за <em>нашей работой</em></h2>
     </header>

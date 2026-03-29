@@ -1,4 +1,50 @@
 // ════════════════════════════════════════════
+//  КАРУСЕЛЬ «ФРАГМЕНТЫ РЕАЛИЗАЦИИ»
+// ════════════════════════════════════════════
+const carouselTrack = document.getElementById('carouselTrack');
+const carouselDots  = document.getElementById('carouselDots');
+const carouselPrev  = document.getElementById('carouselPrev');
+const carouselNext  = document.getElementById('carouselNext');
+
+if (carouselTrack) {
+  const slides = Array.from(carouselTrack.querySelectorAll('.carousel__slide'));
+
+  // Создаём точки
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel__dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Слайд ' + (i + 1));
+    dot.addEventListener('click', () => scrollToSlide(i));
+    carouselDots.appendChild(dot);
+  });
+
+  function scrollToSlide(index) {
+    const slide = slides[index];
+    if (!slide) return;
+    carouselTrack.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+  }
+
+  function updateDots() {
+    const scrollLeft = carouselTrack.scrollLeft;
+    const slideWidth = slides[0] ? slides[0].offsetWidth + 24 : 1; // 24 = gap
+    const active = Math.round(scrollLeft / slideWidth);
+    carouselDots.querySelectorAll('.carousel__dot').forEach((d, i) => {
+      d.classList.toggle('active', i === active);
+    });
+  }
+
+  carouselTrack.addEventListener('scroll', updateDots, { passive: true });
+
+  carouselPrev.addEventListener('click', () => {
+    carouselTrack.scrollBy({ left: -(slides[0].offsetWidth + 24), behavior: 'smooth' });
+  });
+  carouselNext.addEventListener('click', () => {
+    carouselTrack.scrollBy({ left: slides[0].offsetWidth + 24, behavior: 'smooth' });
+  });
+}
+
+
+// ════════════════════════════════════════════
 //  ДАННЫЕ ПРОЕКТОВ
 //  Фото лежат в images/project1/, images/project2/ и т.д.
 //  Имена файлов: 1_1.jpg, 1_2.jpg ... для проекта 1,

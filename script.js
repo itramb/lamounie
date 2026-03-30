@@ -243,13 +243,44 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 
 // ════════════════════════════════════════════
-//  ФОРМА
+//  ФОРМА + ОТПРАВКА В TELEGRAM
 // ════════════════════════════════════════════
+const TG_TOKEN    = '8779917970:AAFPIYwCVH838oujMZgvWutjLIEMcP_gTG0';
+const TG_CHAT_IDS = [
+  '180258351',  // Igor (itramb)
+  // Добавь сюда chat_id других получателей:
+  // '123456789',
+];
+
+async function sendToTelegram(name, phone, contactWay) {
+  const way  = contactWay || 'не указан';
+  const text =
+      `📩 Новая заявка с сайта La Mounine\n\n` +
+      `👤 Имя: ${name}\n` +
+      `📞 Телефон: ${phone}\n` +
+      `💬 Способ связи: ${way}`;
+
+  for (const chatId of TG_CHAT_IDS) {
+    await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text })
+    });
+  }
+}
+
 const form    = document.getElementById('contactForm');
 const success = document.getElementById('formSuccess');
 if (form) {
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const name       = form.querySelector('[name="name"]').value.trim();
+    const phone      = form.querySelector('[name="phone"]').value.trim();
+    const wayEl      = form.querySelector('[name="contact_way"]:checked');
+    const contactWay = wayEl ? wayEl.value : 'не указан';
+
+    await sendToTelegram(name, phone, contactWay);
+
     form.reset();
     success.classList.add('visible');
     setTimeout(() => success.classList.remove('visible'), 5000);

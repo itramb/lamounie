@@ -1,4 +1,45 @@
 // ════════════════════════════════════════════
+//  НАВИГАЦИЯ ПОРТФОЛИО (стрелки + точки)
+// ════════════════════════════════════════════
+const projectsTrack = document.getElementById('projectsTrack');
+const projectsDots  = document.getElementById('projectsDots');
+const projectsPrev  = document.getElementById('projectsPrev');
+const projectsNext  = document.getElementById('projectsNext');
+
+if (projectsTrack) {
+  const cards = Array.from(projectsTrack.querySelectorAll('.project-card'));
+
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel__dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Проект ' + (i + 1));
+    dot.addEventListener('click', () => {
+      projectsTrack.scrollTo({ left: cards[i].offsetLeft, behavior: 'smooth' });
+    });
+    projectsDots.appendChild(dot);
+  });
+
+  function updateProjectDots() {
+    const scrollLeft = projectsTrack.scrollLeft;
+    const cardWidth  = cards[0] ? cards[0].offsetWidth + 24 : 1;
+    const active     = Math.round(scrollLeft / cardWidth);
+    projectsDots.querySelectorAll('.carousel__dot').forEach((d, i) => {
+      d.classList.toggle('active', i === active);
+    });
+  }
+
+  projectsTrack.addEventListener('scroll', updateProjectDots, { passive: true });
+
+  projectsPrev.addEventListener('click', () => {
+    projectsTrack.scrollBy({ left: -(cards[0].offsetWidth + 24), behavior: 'smooth' });
+  });
+  projectsNext.addEventListener('click', () => {
+    projectsTrack.scrollBy({ left: cards[0].offsetWidth + 24, behavior: 'smooth' });
+  });
+}
+
+
+// ════════════════════════════════════════════
 //  КАРУСЕЛЬ «ФРАГМЕНТЫ РЕАЛИЗАЦИИ»
 // ════════════════════════════════════════════
 const carouselTrack = document.getElementById('carouselTrack');
@@ -54,6 +95,7 @@ if (carouselTrack) {
 const PROJECTS = [
   {
     project: 'project1',
+    desc: 'Проект спальни 22,8 м² в загородном доме для девушки. Визуализатор: Бойко Анастасия',
     photos: [
       'images/project1/1_1.jpg',
       'images/project1/1_2.jpg',
@@ -64,6 +106,7 @@ const PROJECTS = [
   },
   {
     project: 'project2',
+    desc: 'Проект кухни-гостиной 42 м² в двухуровневой квартире для семьи с тремя детьми. Визуализатор: Бойко Анастасия',
     photos: [
       'images/project2/2_1.jpg',
       'images/project2/2_2.jpg',
@@ -74,6 +117,7 @@ const PROJECTS = [
   },
   {
     project: 'project3',
+    desc: 'Проект гостевого санузла 4 м² в двухуровневой квартире. Визуализатор: Бойко Анастасия',
     photos: [
       'images/project3/3_1.jpg',
       'images/project3/3_2.jpg',
@@ -83,6 +127,7 @@ const PROJECTS = [
   },
   {
     project: 'project4',
+    desc: 'Проект спальни 15,5 м² в квартире для молодой пары. Визуализатор: Бойко Анастасия',
     photos: [
       'images/project4/4_1.jpg',
       'images/project4/4_2.jpg',
@@ -92,6 +137,7 @@ const PROJECTS = [
   },
   {
     project: 'project5',
+    desc: 'Проект ванной комнаты 4,8 м² в загородном доме для девочек. Визуализатор: Бойко Анастасия',
     photos: [
       'images/project5/5_1.jpg',
       'images/project5/5_2.jpg',
@@ -102,6 +148,7 @@ const PROJECTS = [
   },
   {
     project: 'project6',
+    desc: 'Проект гостевой комнаты 13,7 м² в загородном доме. Визуализатор: Бойко Анастасия',
     photos: [
       'images/project6/6_1.jpg',
       'images/project6/6_2.jpg',
@@ -113,6 +160,7 @@ const PROJECTS = [
   },
   {
     project: 'project7',
+    desc: 'Проект детской комнаты 16,7 м² в загородном доме для маленькой девочки. Визуализатор: Бойко Анастасия',
     photos: [
       'images/project7/7_1.jpg',
       'images/project7/7_3.jpg',
@@ -125,6 +173,7 @@ const PROJECTS = [
   },
   {
     project: 'project8',
+    desc: 'Проект детской комнаты 19 м² в загородном доме для девочки. Визуализатор: Бойко Анастасия',
     photos: [
       'images/project8/8_1.jpg',
       'images/project8/8_2.jpg',
@@ -156,6 +205,9 @@ function openLightbox(projectId, startIndex) {
   if (!project || !project.photos.length) return;
   currentPhotos = project.photos;
   currentIndex  = startIndex || 0;
+  // Показываем описание проекта
+  const desc = document.getElementById('lightboxDesc');
+  if (desc) desc.textContent = project.desc || '';
   renderThumbs();
   showPhoto(currentIndex);
   lightbox.classList.add('open');

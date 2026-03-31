@@ -2,10 +2,10 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>La Mounine — Студия дизайна интерьера</title>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -21,6 +21,7 @@
       <li><a href="#portfolio">Портфолио</a></li>
       <li><a href="#about">О нас</a></li>
       <li><a href="#contact">Контакты</a></li>
+      <li><a href="tel:+79296062792" class="nav__phone">+7 929 606-27-92</a></li>
     </ul>
   </nav>
 
@@ -35,7 +36,7 @@
       </h1>
       <p class="hero__offer">
         Ирина Трамбовецкая и Елена Храмова —<br />
-        создаём интерьеры с характером
+        создаём интерьеры вне времени
       </p>
       <a href="#contact" class="btn hero__btn">Обсудить проект</a>
       <div class="hero__manifesto">
@@ -52,7 +53,7 @@
   <section id="portfolio" class="portfolio">
     <header class="section-header">
       <span class="section-label">Портфолио</span>
-      <h2 class="section-title">Наши<br /><em>работы</em></h2>
+      <h2 class="section-title">Наши<br /><em>проекты</em></h2>
     </header>
 
     <!--
@@ -67,7 +68,11 @@
       Используй HTML: м<sup>2</sup>  →  отображается как м²
     -->
 
-    <div class="projects-scroll">
+    <div class="carousel">
+      <button class="carousel__btn carousel__btn--prev" id="projectsPrev" aria-label="Предыдущее">&#x2039;</button>
+      <button class="carousel__btn carousel__btn--next" id="projectsNext" aria-label="Следующее">&#x203A;</button>
+
+      <div class="projects-scroll" id="projectsTrack">
 
       <div class="project-card" data-project="project1">
         <div class="project-card__cover">
@@ -148,6 +153,10 @@
           <span>Визуализатор: Бойко Анастасия</span>
         </p>
       </div>
+      </div><!-- /projects-scroll -->
+
+      <div class="carousel__dots" id="projectsDots"></div>
+    </div><!-- /carousel -->
   </section>
 
   <!-- FRAGMENTS ══════════════════════════════ -->
@@ -250,12 +259,17 @@
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото">
     <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
     <button class="lightbox__close" id="lightboxClose" aria-label="Закрыть">&#x2715;</button>
-    <button class="lightbox__prev" id="lightboxPrev" aria-label="Предыдущее">&#x2039;</button>
-    <button class="lightbox__next" id="lightboxNext" aria-label="Следующее">&#x203A;</button>
     <div class="lightbox__stage">
       <img src="" alt="" id="lightboxImg" />
     </div>
-    <div class="lightbox__thumbs" id="lightboxThumbs"></div>
+    <div class="lightbox__bottom">
+      <div class="lightbox__desc" id="lightboxDesc"></div>
+      <div class="lightbox__footer">
+        <button class="lightbox__prev" id="lightboxPrev" aria-label="Предыдущее">&#x2039;</button>
+        <div class="lightbox__thumbs" id="lightboxThumbs"></div>
+        <button class="lightbox__next" id="lightboxNext" aria-label="Следующее">&#x203A;</button>
+      </div>
+    </div>
   </div>
 
   <!-- ABOUT ══════════════════════════════════ -->
@@ -283,6 +297,7 @@
     <div class="contact__title">
       <span class="section-label">Контакты</span>
       <h2 class="section-title">Обсудим<br /><em>Ваш проект ?</em></h2>
+      <a href="tel:+79296062792" class="contact__phone">+7 929 606-27-92</a>
     </div>
 
     <form class="form" id="contactForm">

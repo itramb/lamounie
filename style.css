@@ -271,13 +271,8 @@ img { display: block; width: 100%; object-fit: cover; }
   font-style: italic;
 }
 
-/* Декоративная вертикальная линия снизу */
-.hero__line {
-  position: absolute;
-  bottom: 0; left: var(--pad);
-  width: 1px; height: 80px;
-  background: linear-gradient(to bottom, transparent, var(--border));
-}
+/* Декоративная вертикальная линия — скрыта */
+.hero__line { display: none; }
 
 
 /* ════════════════════════════════════════════
@@ -877,7 +872,10 @@ img { display: block; width: 100%; object-fit: cover; }
 
 @media (max-width: 768px) {
   .carousel__btn { display: none; }
-  .carousel__slide { width: 80vw; }
+  .carousel__slide {
+    width: 85vw;
+    height: 55vw; /* ~половина экрана телефона */
+  }
 }
 
 
@@ -1128,6 +1126,9 @@ img { display: block; width: 100%; object-fit: cover; }
   .nav__links { display: none; }
 
   .gallery { grid-template-columns: 1fr; }
+
+  /* Карточки проектов на мобиле */
+  .project-card { width: 80vw; }
 
   .about {
     grid-template-columns: 1fr;

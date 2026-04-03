@@ -806,6 +806,12 @@ img { display: block; width: 100%; object-fit: cover; }
 }
 .form__check a:hover { color: #0f4a80; }
 
+@media (min-width: 768px) {
+  .form__check span,
+  .form__check a {
+    white-space: nowrap;
+  }
+}
 
 /* ════════════════════════════════════════════
    ФРАГМЕНТЫ РЕАЛИЗАЦИИ — карусель

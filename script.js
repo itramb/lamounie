@@ -40,17 +40,16 @@ if (projectsTrack) {
 
 
 // ════════════════════════════════════════════
-//  КАРУСЕЛЬ «ФРАГМЕНТЫ РЕАЛИЗАЦИИ»
+// КАРУСЕЛЬ «ФРАГМЕНТЫ РЕАЛИЗАЦИИ»
 // ════════════════════════════════════════════
 const carouselTrack = document.getElementById('carouselTrack');
-const carouselDots  = document.getElementById('carouselDots');
-const carouselPrev  = document.getElementById('carouselPrev');
-const carouselNext  = document.getElementById('carouselNext');
+const carouselDots = document.getElementById('carouselDots');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
 
 if (carouselTrack) {
   const slides = Array.from(carouselTrack.querySelectorAll('.carousel__slide'));
 
-  // Создаём точки
   slides.forEach((_, i) => {
     const dot = document.createElement('button');
     dot.className = 'carousel__dot' + (i === 0 ? ' active' : '');
@@ -59,29 +58,73 @@ if (carouselTrack) {
     carouselDots.appendChild(dot);
   });
 
-  function scrollToSlide(index) {
+  function getSlideLeft(index) {
     const slide = slides[index];
-    if (!slide) return;
-    carouselTrack.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+    if (!slide) return 0;
+
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      const trackStyles = getComputedStyle(carouselTrack);
+      const paddingLeft = parseFloat(trackStyles.paddingLeft) || 0;
+      const targetLeft = slide.offsetLeft - paddingLeft - (carouselTrack.clientWidth - slide.offsetWidth) / 2;
+      return Math.max(0, targetLeft);
+    }
+
+    return slide.offsetLeft;
+  }
+
+  function scrollToSlide(index) {
+    carouselTrack.scrollTo({
+      left: getSlideLeft(index),
+      behavior: 'smooth'
+    });
+  }
+
+  function getActiveSlideIndex() {
+    const trackCenter = carouselTrack.scrollLeft + carouselTrack.clientWidth / 2;
+
+    let activeIndex = 0;
+    let minDistance = Infinity;
+
+    slides.forEach((slide, index) => {
+      const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+      const distance = Math.abs(trackCenter - slideCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        activeIndex = index;
+      }
+    });
+
+    return activeIndex;
   }
 
   function updateDots() {
-    const scrollLeft = carouselTrack.scrollLeft;
-    const slideWidth = slides[0] ? slides[0].offsetWidth + 24 : 1; // 24 = gap
-    const active = Math.round(scrollLeft / slideWidth);
-    carouselDots.querySelectorAll('.carousel__dot').forEach((d, i) => {
-      d.classList.toggle('active', i === active);
+    const active = getActiveSlideIndex();
+    carouselDots.querySelectorAll('.carousel__dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === active);
     });
+  }
+
+  function scrollByOne(direction) {
+    const active = getActiveSlideIndex();
+    const nextIndex = Math.max(0, Math.min(slides.length - 1, active + direction));
+    scrollToSlide(nextIndex);
   }
 
   carouselTrack.addEventListener('scroll', updateDots, { passive: true });
 
-  carouselPrev.addEventListener('click', () => {
-    carouselTrack.scrollBy({ left: -(slides[0].offsetWidth + 24), behavior: 'smooth' });
-  });
-  carouselNext.addEventListener('click', () => {
-    carouselTrack.scrollBy({ left: slides[0].offsetWidth + 24, behavior: 'smooth' });
-  });
+  if (carouselPrev) {
+    carouselPrev.addEventListener('click', () => scrollByOne(-1));
+  }
+
+  if (carouselNext) {
+    carouselNext.addEventListener('click', () => scrollByOne(1));
+  }
+
+  window.addEventListener('resize', updateDots);
+  updateDots();
 }
 
 

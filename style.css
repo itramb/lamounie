@@ -523,9 +523,9 @@ img { display: block; width: 100%; object-fit: cover; }
 ════════════════════════════════════════════ */
 .about {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr);
+  gap: 3.5rem;
+  align-items: start;
   padding: 8rem var(--pad);
   border-top: 1px solid var(--border);
 }
@@ -533,8 +533,20 @@ img { display: block; width: 100%; object-fit: cover; }
 .about__desc {
   color: var(--fg-muted);
   line-height: 1.85;
-  margin-top: 2rem;
-  max-width: 480px;
+  margin-top: 1.4rem;
+  max-width: 620px;
+}
+
+.about__desc + .about__desc {
+  margin-top: 1.2rem;
+}
+
+.about__desc--accent {
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
 }
 
 .about__stats {
@@ -580,6 +592,30 @@ img { display: block; width: 100%; object-fit: cover; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-muted);
+}
+
+/* Десктопная настройка ABOUT */
+@media (min-width: 1024px) {
+  .about {
+    grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .about__text {
+    align-self: start;
+  }
+
+  .about__desc {
+    max-width: 1340px;
+  }
+
+  .about__img {
+    align-self: center;
+    justify-self: end;
+    width: min(100%, 460px);
+    aspect-ratio: 4 / 5;
+  }
 }
 
 
@@ -1206,8 +1242,6 @@ img { display: block; width: 100%; object-fit: cover; }
     white-space: nowrap;
     color: var(--fg) !important;
   }
-
-
 
   .gallery { grid-template-columns: 1fr; }
 

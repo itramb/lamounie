@@ -1185,18 +1185,23 @@ img { display: block; width: 100%; object-fit: cover; }
   .navlogo img {
     height: 32px;
     width: auto;
-    max-width: 48vw;
+    max-width: 50vw;
   }
 
   .navlinks {
     display: flex;
     align-items: center;
-    gap: 0;
     margin-left: auto;
+    gap: 0;
   }
 
-  .navlinks li:not(:last-child) {
+  .navlinks li {
     display: none;
+  }
+
+  .navlinks li:last-child {
+    display: flex;
+    align-items: center;
   }
 
   .navphone {
@@ -1208,7 +1213,6 @@ img { display: block; width: 100%; object-fit: cover; }
     letter-spacing: 0.04em;
     white-space: nowrap;
   }
-
 
 
   .gallery { grid-template-columns: 1fr; }

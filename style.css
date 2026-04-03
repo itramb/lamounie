@@ -532,9 +532,10 @@ img { display: block; width: 100%; object-fit: cover; }
 
 .about__desc {
   color: var(--fg-muted);
+  font-size: clamp(14px, 0.95vw, 16px);
   line-height: 1.85;
-  margin-top: 1.4rem;
-  max-width: 620px;
+  margin-top: 2rem;
+  max-width: 480px;
 }
 
 .about__desc + .about__desc {

@@ -49,6 +49,32 @@ const carouselNext = document.getElementById('carouselNext');
 
 if (carouselTrack) {
   const slides = Array.from(carouselTrack.querySelectorAll('.carousel__slide'));
+  slides.forEach((slide) => {
+    const img = slide.querySelector('img');
+    if (!img) return;
+
+    function setOrientation() {
+      if (!img.naturalWidth || !img.naturalHeight) return;
+
+      slide.classList.remove('is-landscape', 'is-portrait', 'is-square');
+
+      const ratio = img.naturalWidth / img.naturalHeight;
+
+      if (ratio > 1.2) {
+        slide.classList.add('is-landscape');
+      } else if (ratio < 0.9) {
+        slide.classList.add('is-portrait');
+      } else {
+        slide.classList.add('is-square');
+      }
+    }
+
+    if (img.complete) {
+      setOrientation();
+    } else {
+      img.addEventListener('load', setOrientation, { once: true });
+    }
+  });
 
   slides.forEach((_, i) => {
     const dot = document.createElement('button');

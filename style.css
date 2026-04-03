@@ -879,13 +879,12 @@ img { display: block; width: 100%; object-fit: cover; }
     gap: 0.875rem;
     padding: 0 4vw 1rem;
     scroll-padding-inline: 4vw;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .carousel__slide {
     width: auto;
     max-width: none;
-    height: min(74vw, 560px);
     padding: 0;
     display: inline-flex;
     align-items: center;
@@ -894,6 +893,19 @@ img { display: block; width: 100%; object-fit: cover; }
     background: transparent;
     border: none;
     overflow: visible;
+    height: min(74vw, 560px);
+  }
+
+  .carousel__slide.is-landscape {
+    height: min(52vw, 320px);
+  }
+
+  .carousel__slide.is-square {
+    height: min(68vw, 460px);
+  }
+
+  .carousel__slide.is-portrait {
+    height: min(74vw, 560px);
   }
 
   .carousel__slide img {
@@ -911,6 +923,7 @@ img { display: block; width: 100%; object-fit: cover; }
     gap: 6px;
   }
 }
+
 
 
 

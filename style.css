@@ -246,12 +246,14 @@ img { display: block; width: 100%; object-fit: cover; }
   color: var(--fg-muted);
   font-size: clamp(14px, 1.1vw, 16px);
   line-height: 1.7;
-  max-width: 420px;
+  width: 100%;
+  max-width: 480px;
 }
 
 .hero__manifesto {
   margin-top: 2.5rem;
-  max-width: 500px;
+  width: 100%;
+  max-width: 13000px;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
@@ -531,9 +533,13 @@ img { display: block; width: 100%; object-fit: cover; }
 }
 
 .about__desc {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
   color: var(--fg-muted);
-  font-size: clamp(14px, 0.95vw, 16px);
-  line-height: 1.85;
   margin-top: 2rem;
   max-width: 480px;
 }

@@ -429,3 +429,60 @@ const sectionObserver = new IntersectionObserver(
   { threshold: 0.4 }
 );
 sections.forEach(sec => sectionObserver.observe(sec));
+
+// ════════════════════════════════════════════
+//  ABOUT — галерея
+// ════════════════════════════════════════════
+
+const aboutGallery = document.getElementById('aboutGallery');
+const aboutGalleryDots = document.getElementById('aboutGalleryDots');
+const aboutPrev = document.querySelector('.about-gallery__btn--prev');
+const aboutNext = document.querySelector('.about-gallery__btn--next');
+
+if (aboutGallery && aboutGalleryDots) {
+  const slides = Array.from(aboutGallery.querySelectorAll('.about-gallery__slide'));
+
+  function scrollToAboutSlide(index) {
+    const slide = slides[index];
+    if (!slide) return;
+    aboutGallery.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+  }
+
+  function getAboutActiveIndex() {
+    return Math.round(aboutGallery.scrollLeft / aboutGallery.clientWidth);
+  }
+
+  function updateAboutDots() {
+    const active = getAboutActiveIndex();
+    aboutGalleryDots.querySelectorAll('.about-gallery__dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === active);
+    });
+  }
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'about-gallery__dot' + (i === 0 ? ' active' : '');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Фото ${i + 1}`);
+    dot.addEventListener('click', () => scrollToAboutSlide(i));
+    aboutGalleryDots.appendChild(dot);
+  });
+
+  if (aboutPrev) {
+    aboutPrev.addEventListener('click', () => {
+      const active = getAboutActiveIndex();
+      scrollToAboutSlide(Math.max(0, active - 1));
+    });
+  }
+
+  if (aboutNext) {
+    aboutNext.addEventListener('click', () => {
+      const active = getAboutActiveIndex();
+      scrollToAboutSlide(Math.min(slides.length - 1, active + 1));
+    });
+  }
+
+  aboutGallery.addEventListener('scroll', updateAboutDots, { passive: true });
+  window.addEventListener('resize', updateAboutDots);
+  updateAboutDots();
+}

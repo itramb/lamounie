@@ -303,10 +303,18 @@
       </p>
 
     </div>
-    <div class="about__img">
-      <!-- <img src="images/team.jpg" alt="Команда La Mounine" /> -->
-      <div class="about__img-placeholder">Фото команды</div>
+        <div class="about-gallery">
+      <button class="about-gallery__btn about-gallery__btn--prev" type="button" aria-label="Предыдущее фото"><span aria-hidden="true">‹</span></button>
+      <div class="about-gallery__viewport" id="aboutGallery">
+        <div class="about-gallery__slide"><div class="about-gallery__placeholder">фото 1</div></div>
+        <div class="about-gallery__slide"><div class="about-gallery__placeholder">фото 2</div></div>
+        <div class="about-gallery__slide"><div class="about-gallery__placeholder">фото 3</div></div>
+        <div class="about-gallery__slide"><div class="about-gallery__placeholder">фото 4</div></div>
+      </div>
+      <button class="about-gallery__btn about-gallery__btn--next" type="button" aria-label="Следующее фото"><span aria-hidden="true">›</span></button>
+      <div class="about-gallery__dots" id="aboutGalleryDots"></div>
     </div>
+  
   </section>
 
   <!-- CONTACT ════════════════════════════════ -->

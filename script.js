@@ -134,9 +134,10 @@ if (carouselTrack) {
   }
 
   function scrollByOne(direction) {
-    const active = getActiveSlideIndex();
-    const nextIndex = Math.max(0, Math.min(slides.length - 1, active + direction));
-    scrollToSlide(nextIndex);
+    carouselTrack.scrollBy({ 
+      left: direction * carouselTrack.clientWidth * 0.6, 
+      behavior: 'smooth' 
+    });
   }
 
   carouselTrack.addEventListener('scroll', updateDots, { passive: true });
@@ -364,11 +365,76 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 
 // ════════════════════════════════════════════
+//  МАСКА ДЛЯ ТЕЛЕФОНА
+// ════════════════════════════════════════════
+const phoneInput = document.getElementById('phone');
+if (phoneInput) {
+  phoneInput.addEventListener('input', function (e) {
+    let input = e.target;
+    let numbersValue = input.value.replace(/\D/g, '');
+    let formattedValue = '';
+
+    if (!numbersValue) {
+      input.value = '';
+      return;
+    }
+
+    // Обработка российских номеров
+    if (['7', '8', '9'].includes(numbersValue[0])) {
+      if (numbersValue[0] === '9') numbersValue = '7' + numbersValue;
+      if (numbersValue[0] === '8') numbersValue = '7' + numbersValue.substring(1);
+      
+      let firstSymbols = '+7';
+      formattedValue = firstSymbols + ' ';
+
+      if (numbersValue.length > 1) {
+        formattedValue += '(' + numbersValue.substring(1, 4);
+      }
+      if (numbersValue.length >= 5) {
+        formattedValue += ') ' + numbersValue.substring(4, 7);
+      }
+      if (numbersValue.length >= 8) {
+        formattedValue += '-' + numbersValue.substring(7, 9);
+      }
+      if (numbersValue.length >= 10) {
+        formattedValue += '-' + numbersValue.substring(9, 11);
+      }
+    } else {
+      // Для номеров других стран
+      formattedValue = '+' + numbersValue.substring(0, 15);
+    }
+
+    input.value = formattedValue;
+  });
+
+  phoneInput.addEventListener('keydown', function (e) {
+    // Если пользователь стирает и осталась только 7, очистить поле, чтобы плейсхолдер не мешал
+    if (e.key === 'Backspace' && e.target.value.replace(/\D/g, '').length === 1) {
+      e.target.value = '';
+    }
+  });
+
+  phoneInput.addEventListener('focus', function () {
+    if (!this.value) {
+      this.value = '+7 ';
+    }
+  });
+
+  phoneInput.addEventListener('blur', function () {
+    if (this.value === '+7 ') {
+      this.value = '';
+    }
+  });
+}
+
+
+// ════════════════════════════════════════════
 //  ФОРМА + ОТПРАВКА В TELEGRAM
 // ════════════════════════════════════════════
 const TG_TOKEN    = '8779917970:AAFPIYwCVH838oujMZgvWutjLIEMcP_gTG0';
 const TG_CHAT_IDS = [
   '180258351',  // Igor (itramb)
+  '295375009',
   // Добавь сюда chat_id других получателей:
   // '123456789',
 ];
@@ -469,7 +535,7 @@ if (aboutGallery && aboutGalleryDots) {
   });
 
   if (aboutPrev) {
-    aboutPrev.addEventListener('click', () => {
+  aboutPrev.addEventListener('click', () => {
       const active = getAboutActiveIndex();
       scrollToAboutSlide(Math.max(0, active - 1));
     });
@@ -485,4 +551,69 @@ if (aboutGallery && aboutGalleryDots) {
   aboutGallery.addEventListener('scroll', updateAboutDots, { passive: true });
   window.addEventListener('resize', updateAboutDots);
   updateAboutDots();
+  
+  // Drag-to-scroll для тестирования мышью (перетаскивание)
+  let isDown = false, startX, scrollLeft;
+  aboutGallery.addEventListener('mousedown', (e) => {
+    isDown = true;
+    aboutGallery.style.scrollBehavior = 'auto'; // Отключаем smooth snap на время драга
+    startX = e.pageX - aboutGallery.offsetLeft;
+    scrollLeft = aboutGallery.scrollLeft;
+  });
+  aboutGallery.addEventListener('mouseleave', () => {
+    isDown = false;
+    aboutGallery.style.scrollBehavior = 'smooth';
+  });
+  aboutGallery.addEventListener('mouseup', () => {
+    isDown = false;
+    aboutGallery.style.scrollBehavior = 'smooth';
+  });
+  aboutGallery.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - aboutGallery.offsetLeft;
+    const walk = (x - startX) * 2; 
+    aboutGallery.scrollLeft = scrollLeft - walk;
+  });
 }
+
+// ════════════════════════════════════════════
+//  МОБИЛЬНОЕ МЕНЮ
+// ════════════════════════════════════════════
+const burger = document.querySelector('.nav__burger');
+const mobileNavLinks = document.querySelector('.nav__links');
+const navItems = document.querySelectorAll('.nav__links a');
+
+if (burger && mobileNavLinks) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('is-active');
+    mobileNavLinks.classList.toggle('is-open');
+    document.body.style.overflow = mobileNavLinks.classList.contains('is-open') ? 'hidden' : '';
+  });
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      burger.classList.remove('is-active');
+      mobileNavLinks.classList.remove('is-open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Предотвращение мерцания анимаций при изменении размера окна
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    document.body.classList.add('resize-animation-stopper');
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      document.body.classList.remove('resize-animation-stopper');
+    }, 400);
+
+    // Авто-закрытие меню при переходе на десктопный размер
+    if (window.innerWidth > 1024) {
+      burger.classList.remove('is-active');
+      mobileNavLinks.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  });
+}
+

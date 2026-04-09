@@ -22,10 +22,16 @@
 
     <ul class="nav__links">
       <li><a href="#portfolio">Портфолио</a></li>
+      <li><a href="#fragments">Реализация</a></li>
       <li><a href="#about">О нас</a></li>
       <li><a href="#contact">Контакты</a></li>
       <li><a href="tel:+79296062792" class="nav__phone">+7 929 606-27-92</a></li>
     </ul>
+
+    <button type="button" class="nav__burger" aria-label="Открыть меню">
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
   <!-- HERO ══════════════════════════════════ -->
@@ -102,7 +108,7 @@
           <img src="images/project3/3_1.jpg" alt="Проект гостевого санузла" />
         </div>
         <p class="project-card__caption">
-          Проект спальни 22,8 м<sup>2</sup> в загородном доме для девушки.<br />
+          Проект спальни 22,8 м<sup>2</sup> в загородном доме для деловой женщины.<br />
           <span>Визуализатор: Бойко Анастасия</span>
         </p>
       </div>
@@ -122,7 +128,7 @@
           <img src="images/project5/5_1.jpg" alt="Проект ванной комнаты" />
         </div>
         <p class="project-card__caption">
-          Проект ванной комнаты 4,8 м<sup>2</sup> в загородном доме для девочек.<br />
+          Проект ванной комнаты 4,8 м<sup>2</sup> в таунхаусе для девочек.<br />
           <span>Визуализатор: Бойко Анастасия</span>
         </p>
       </div>
@@ -132,7 +138,7 @@
           <img src="images/project6/6_1.jpg" alt="Проект гостевой комнаты" />
         </div>
         <p class="project-card__caption">
-          Проект гостевой комнаты 13,7 м<sup>2</sup> в загородном доме.<br />
+          Проект гостевой комнаты 13,7 м<sup>2</sup> в таунхаусе.<br />
           <span>Визуализатор: Бойко Анастасия</span>
         </p>
       </div>
@@ -142,7 +148,7 @@
           <img src="images/project7/7_1.jpg" alt="Проект детской комнаты" />
         </div>
         <p class="project-card__caption">
-          Проект детской комнаты 16,7 м<sup>2</sup> в загородном доме для маленькой девочки.<br />
+          Проект детской комнаты с «сырной» гардеробной 16,7 м<sup>2</sup> в таунхаусе для маленькой девочки.<br />
           <span>Визуализатор: Бойко Анастасия</span>
         </p>
       </div>
@@ -152,7 +158,97 @@
           <img src="images/project8/8_1.jpg" alt="Проект детской комнаты" />
         </div>
         <p class="project-card__caption">
-          Проект детской комнаты 19 м<sup>2</sup> в загородном доме для девочки.<br />
+          Проект детской комнаты с гардеробной 19,1 м<sup>2</sup> в таунхаусе для девочки в нескольких вариантах.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project9">
+        <div class="project-card__cover">
+          <img src="images/project9/9_1.jpg" alt="Проект комнаты для подростка" />
+        </div>
+        <p class="project-card__caption">
+          Проект комнаты для подростка 14,3 м<sup>2</sup> в таунхаусе со своим собственным выходом на улицу.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project10">
+        <div class="project-card__cover">
+          <img src="images/project10/10_1.jpg" alt="Проект гостевого санузла" />
+        </div>
+        <p class="project-card__caption">
+          Проект гостевого санузла 3,8 м<sup>2</sup> в таунхаусе с выходом в душевую и технические зоны.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project11">
+        <div class="project-card__cover">
+          <img src="images/project11/11_1.jpg" alt="Проект мастер-спальни" />
+        </div>
+        <p class="project-card__caption">
+          Проект мастер-спальни 22,2 м<sup>2</sup> в таунхаусе, представлены разные цветовые решения на выбор.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project12">
+        <div class="project-card__cover">
+          <img src="images/project12/12_1.jpg" alt="Проект гардероба" />
+        </div>
+        <p class="project-card__caption">
+          Проект невероятного гардероба, соединяющего спальню и санузел, 11,6 м<sup>2</sup>.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project13">
+        <div class="project-card__cover">
+          <img src="images/project13/13_1.jpg" alt="Проект мастер-санузла" />
+        </div>
+        <p class="project-card__caption">
+          Проект мастер-санузла 8,6 м<sup>2</sup> в разных цветовых гаммах.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project14">
+        <div class="project-card__cover">
+          <img src="images/project14/14_1.jpg" alt="Проект кухни-гостиной" />
+        </div>
+        <p class="project-card__caption">
+          Проект кухни-гостиной 43,1 м<sup>2</sup> в таунхаусе для семейной пары с маленькими детьми.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project15">
+        <div class="project-card__cover">
+          <img src="images/project15/15_1.jpg" alt="Проект комнаты для мальчика-подростка" />
+        </div>
+        <p class="project-card__caption">
+          Проект комнаты для мальчика-подростка 12,5 м<sup>2</sup> в квартире с собственным санузлом 3,6 м<sup>2</sup>.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project16">
+        <div class="project-card__cover">
+          <img src="images/project16/16_1.jpg" alt="Проект ванной комнаты" />
+        </div>
+        <p class="project-card__caption">
+          Проект ванной комнаты 4,9 м<sup>2</sup> в квартире с акцентным декором.<br />
+          <span>Визуализатор: Бойко Анастасия</span>
+        </p>
+      </div>
+
+      <div class="project-card" data-project="project17">
+        <div class="project-card__cover">
+          <img src="images/project17/17_1.jpg" alt="Проект прихожей, кухни-столовой и гостиной" />
+        </div>
+        <p class="project-card__caption">
+          Проект прихожей, кухни-столовой и гостиной 4,9 м<sup>2</sup> в квартире для семьи.<br />
           <span>Визуализатор: Бойко Анастасия</span>
         </p>
       </div>

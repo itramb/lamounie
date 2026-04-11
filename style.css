@@ -340,7 +340,7 @@ img {
 
 .hero__manifesto p {
   font-family: var(--font-display, serif), serif;
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-size: clamp(1.25rem, 1.6vw, 1.45rem);
   font-weight: 300;
   font-style: italic;
   line-height: 1.7;
@@ -735,6 +735,7 @@ img {
 }
 
 .process__card-text {
+  font-family: var(--font-body), sans-serif;
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   line-height: 1.75;
   color: var(--fg-muted);
@@ -832,8 +833,8 @@ img {
 }
 
 .pricing__intro {
-  font-family: var(--font-body, sans-serif), sans-serif;
-  font-size: clamp(0.875rem, 1.1vw, 1rem);
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
   line-height: 1.75;
   color: var(--fg-muted);
   margin-bottom: 3.5rem;
@@ -964,7 +965,7 @@ img {
 
 .about__desc {
   font-family: var(--font-display), serif;
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-size: clamp(1.25rem, 1.6vw, 1.45rem);
   font-weight: 300;
   font-style: italic;
   line-height: 1.7;
@@ -982,7 +983,7 @@ img {
   color: var(--fg);
   font-family: var(--font-display, serif), serif;
   font-style: italic;
-  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  font-size: clamp(1.3rem, 1.7vw, 1.55rem);
   line-height: 1.7;
 }
 

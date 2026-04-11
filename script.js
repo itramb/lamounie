@@ -2,9 +2,9 @@
 //  НАВИГАЦИЯ ПОРТФОЛИО (стрелки + точки)
 // ════════════════════════════════════════════
 const projectsTrack = document.getElementById('projectsTrack');
-const projectsDots  = document.getElementById('projectsDots');
-const projectsPrev  = document.getElementById('projectsPrev');
-const projectsNext  = document.getElementById('projectsNext');
+const projectsDots = document.getElementById('projectsDots');
+const projectsPrev = document.getElementById('projectsPrev');
+const projectsNext = document.getElementById('projectsNext');
 
 if (projectsTrack) {
   const cards = Array.from(projectsTrack.querySelectorAll('.project-card'));
@@ -21,8 +21,8 @@ if (projectsTrack) {
 
   function updateProjectDots() {
     const scrollLeft = projectsTrack.scrollLeft;
-    const cardWidth  = cards[0] ? cards[0].offsetWidth + 24 : 1;
-    const active     = Math.round(scrollLeft / cardWidth);
+    const cardWidth = cards[0] ? cards[0].offsetWidth + 24 : 1;
+    const active = Math.round(scrollLeft / cardWidth);
     projectsDots.querySelectorAll('.carousel__dot').forEach((d, i) => {
       d.classList.toggle('active', i === active);
     });
@@ -134,9 +134,9 @@ if (carouselTrack) {
   }
 
   function scrollByOne(direction) {
-    carouselTrack.scrollBy({ 
-      left: direction * carouselTrack.clientWidth * 0.6, 
-      behavior: 'smooth' 
+    carouselTrack.scrollBy({
+      left: direction * carouselTrack.clientWidth * 0.6,
+      behavior: 'smooth'
     });
   }
 
@@ -262,7 +262,7 @@ const PROJECTS = [
   },
   {
     project: 'project10',
-    desc: 'Проект гостевого санузла 3,8 м² в таунхаусе с выходом в душевую и технические зоны Визуализатор: Бойко Анастасия',
+    desc: 'Проект сказочного гостевого санузла 3,8 м² в таунхаусе с выходом в душевую и технические зоны Визуализатор: Бойко Анастасия',
     photos: [
       'images/project10/10_1.jpg', 'images/project10/10_2.jpg', 'images/project10/10_3.jpg'
     ]
@@ -297,7 +297,7 @@ const PROJECTS = [
   },
   {
     project: 'project15',
-    desc: 'Проект комнаты для мальчика-подростка 12,5 м² в квартире с собственным санузлом 3,6 м² Визуализатор: Бойко Анастасия',
+    desc: 'Проект комнаты для мальчика-подростка 12,5 м² с собственным санузлом 3,6 м², здесь сочетаются минимализм с элементами классики в современном прочтении Визуализатор: Бойко Анастасия',
     photos: [
       'images/project15/15_1.jpg', 'images/project15/15_2.jpg', 'images/project15/15_3.jpg', 'images/project15/15_4.jpg', 'images/project15/15_5.jpg', 'images/project15/15_6.jpg', 'images/project15/15_7.jpg', 'images/project15/15_8.jpg'
     ]
@@ -322,22 +322,22 @@ const PROJECTS = [
 // ════════════════════════════════════════════
 //  ЛАЙТБОКС
 // ════════════════════════════════════════════
-const lightbox   = document.getElementById('lightbox');
-const lbImg      = document.getElementById('lightboxImg');
-const lbClose    = document.getElementById('lightboxClose');
-const lbPrev     = document.getElementById('lightboxPrev');
-const lbNext     = document.getElementById('lightboxNext');
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightboxImg');
+const lbClose = document.getElementById('lightboxClose');
+const lbPrev = document.getElementById('lightboxPrev');
+const lbNext = document.getElementById('lightboxNext');
 const lbBackdrop = document.getElementById('lightboxBackdrop');
-const lbThumbs   = document.getElementById('lightboxThumbs');
+const lbThumbs = document.getElementById('lightboxThumbs');
 
 let currentPhotos = [];
-let currentIndex  = 0;
+let currentIndex = 0;
 
 function openLightbox(projectId, startIndex) {
   const project = PROJECTS.find(p => p.project === projectId);
   if (!project || !project.photos.length) return;
   currentPhotos = project.photos;
-  currentIndex  = startIndex || 0;
+  currentIndex = startIndex || 0;
   // Показываем описание проекта
   const desc = document.getElementById('lightboxDesc');
   if (desc) {
@@ -439,12 +439,12 @@ lbImg.addEventListener('wheel', (e) => {
   if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
     e.preventDefault();
     if (lbWheelCooldown) return;
-    
+
     lbWheelAccumX += e.deltaX;
-    
+
     clearTimeout(lbWheelResetTimer);
     lbWheelResetTimer = setTimeout(() => lbWheelAccumX = 0, 300);
-    
+
     if (Math.abs(lbWheelAccumX) > 60) {
       showPhoto(lbWheelAccumX > 0 ? currentIndex + 1 : currentIndex - 1);
       lbWheelAccumX = 0;
@@ -461,9 +461,9 @@ lbNext.addEventListener('click', (e) => { e.stopPropagation(); showPhoto(current
 
 document.addEventListener('keydown', (e) => {
   if (!lightbox.classList.contains('open')) return;
-  if (e.key === 'ArrowLeft')  showPhoto(currentIndex - 1);
+  if (e.key === 'ArrowLeft') showPhoto(currentIndex - 1);
   if (e.key === 'ArrowRight') showPhoto(currentIndex + 1);
-  if (e.key === 'Escape')     closeLightbox();
+  if (e.key === 'Escape') closeLightbox();
 });
 
 // Drag-скролл мышью
@@ -472,8 +472,8 @@ if (scroll) {
   let isDown = false, startX, scrollLeft;
   scroll.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - scroll.offsetLeft; scrollLeft = scroll.scrollLeft; });
   scroll.addEventListener('mouseleave', () => isDown = false);
-  scroll.addEventListener('mouseup',    () => isDown = false);
-  scroll.addEventListener('mousemove',  e => {
+  scroll.addEventListener('mouseup', () => isDown = false);
+  scroll.addEventListener('mousemove', e => {
     if (!isDown) return;
     e.preventDefault();
     scroll.scrollLeft = scrollLeft - (e.pageX - scroll.offsetLeft - startX) * 1.5;
@@ -521,7 +521,7 @@ if (phoneInput) {
     if (['7', '8', '9'].includes(numbersValue[0])) {
       if (numbersValue[0] === '9') numbersValue = '7' + numbersValue;
       if (numbersValue[0] === '8') numbersValue = '7' + numbersValue.substring(1);
-      
+
       let firstSymbols = '+7';
       formattedValue = firstSymbols + ' ';
 
@@ -569,7 +569,7 @@ if (phoneInput) {
 // ════════════════════════════════════════════
 //  ФОРМА + ОТПРАВКА В TELEGRAM
 // ════════════════════════════════════════════
-const TG_TOKEN    = '8779917970:AAFPIYwCVH838oujMZgvWutjLIEMcP_gTG0';
+const TG_TOKEN = '8779917970:AAFPIYwCVH838oujMZgvWutjLIEMcP_gTG0';
 const TG_CHAT_IDS = [
   '180258351',  // Igor (itramb)
   '295375009',
@@ -578,12 +578,12 @@ const TG_CHAT_IDS = [
 ];
 
 async function sendToTelegram(name, phone, contactWay) {
-  const way  = contactWay || 'не указан';
+  const way = contactWay || 'не указан';
   const text =
-      `📩 Новая заявка с сайта La Mounine\n\n` +
-      `👤 Имя: ${name}\n` +
-      `📞 Телефон: ${phone}\n` +
-      `💬 Способ связи: ${way}`;
+    `📩 Новая заявка с сайта La Mounine\n\n` +
+    `👤 Имя: ${name}\n` +
+    `📞 Телефон: ${phone}\n` +
+    `💬 Способ связи: ${way}`;
 
   for (const chatId of TG_CHAT_IDS) {
     await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
@@ -594,7 +594,7 @@ async function sendToTelegram(name, phone, contactWay) {
   }
 }
 
-const form    = document.getElementById('contactForm');
+const form = document.getElementById('contactForm');
 const success = document.getElementById('formSuccess');
 const errorMsg = document.getElementById('formError');
 
@@ -602,26 +602,26 @@ if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     form.classList.add('form--submitted');
-    
+
     if (!form.checkValidity()) {
-      if(errorMsg) errorMsg.classList.add('visible');
-      if(success) success.classList.remove('visible');
+      if (errorMsg) errorMsg.classList.add('visible');
+      if (success) success.classList.remove('visible');
       return;
     }
-    
-    if(errorMsg) errorMsg.classList.remove('visible');
 
-    const name       = form.querySelector('[name="name"]').value.trim();
-    const phone      = form.querySelector('[name="phone"]').value.trim();
-    const wayEl      = form.querySelector('[name="contact_way"]:checked');
+    if (errorMsg) errorMsg.classList.remove('visible');
+
+    const name = form.querySelector('[name="name"]').value.trim();
+    const phone = form.querySelector('[name="phone"]').value.trim();
+    const wayEl = form.querySelector('[name="contact_way"]:checked');
     const contactWay = wayEl ? wayEl.value : 'не указан';
 
     await sendToTelegram(name, phone, contactWay);
 
     form.reset();
     form.classList.remove('form--submitted');
-    if(success) success.classList.add('visible');
-    setTimeout(() => { if(success) success.classList.remove('visible'); }, 5000);
+    if (success) success.classList.add('visible');
+    setTimeout(() => { if (success) success.classList.remove('visible'); }, 5000);
   });
 }
 
@@ -686,7 +686,7 @@ if (aboutGallery && aboutGalleryDots) {
   });
 
   if (aboutPrev) {
-  aboutPrev.addEventListener('click', () => {
+    aboutPrev.addEventListener('click', () => {
       const active = getAboutActiveIndex();
       scrollToAboutSlide(Math.max(0, active - 1));
     });
@@ -702,7 +702,7 @@ if (aboutGallery && aboutGalleryDots) {
   aboutGallery.addEventListener('scroll', updateAboutDots, { passive: true });
   window.addEventListener('resize', updateAboutDots);
   updateAboutDots();
-  
+
   // Drag-to-scroll для тестирования мышью (перетаскивание)
   let isDown = false, startX, scrollLeft;
   aboutGallery.addEventListener('mousedown', (e) => {
@@ -723,7 +723,7 @@ if (aboutGallery && aboutGalleryDots) {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - aboutGallery.offsetLeft;
-    const walk = (x - startX) * 2; 
+    const walk = (x - startX) * 2;
     aboutGallery.scrollLeft = scrollLeft - walk;
   });
 }
@@ -773,7 +773,7 @@ if (burger && mobileNavLinks) {
 /* ════════════════════════════════════════════
    PROCESS SLIDER
 ════════════════════════════════════════════ */
-(function   () {
+(function () {
   const processStage = document.getElementById('processStage');
   const processDotsArray = document.querySelectorAll('.process__dot');
   const processPrev = document.getElementById('processPrev');
@@ -782,18 +782,18 @@ if (burger && mobileNavLinks) {
   if (processStage) {
     const pCards = Array.from(processStage.querySelectorAll('.process__card'));
     if (!pCards.length) return;
-    
+
     function updateProcessDots() {
       const scrollLeft = processStage.scrollLeft;
-      const cardWidth  = pCards[0].offsetWidth; 
-      const active     = Math.round(scrollLeft / cardWidth);
+      const cardWidth = pCards[0].offsetWidth;
+      const active = Math.round(scrollLeft / cardWidth);
       processDotsArray.forEach((d, i) => {
         d.classList.toggle('process__dot--active', i === active);
       });
-      if(processPrev) processPrev.disabled = active === 0;
-      if(processNext) processNext.disabled = active === pCards.length - 1;
+      if (processPrev) processPrev.disabled = active === 0;
+      if (processNext) processNext.disabled = active === pCards.length - 1;
     }
-    
+
     processStage.addEventListener('scroll', updateProcessDots, { passive: true });
     window.addEventListener('resize', updateProcessDots);
 
@@ -803,22 +803,22 @@ if (burger && mobileNavLinks) {
       });
     });
 
-    if(processPrev) {
-      processPrev.addEventListener('click', function() {
+    if (processPrev) {
+      processPrev.addEventListener('click', function () {
         processStage.scrollBy({ left: -(pCards[0].offsetWidth), behavior: 'smooth' });
       });
     }
-    if(processNext) {
-      processNext.addEventListener('click', function() {
+    if (processNext) {
+      processNext.addEventListener('click', function () {
         processStage.scrollBy({ left: pCards[0].offsetWidth, behavior: 'smooth' });
       });
     }
-    
+
     // Drag-to-scroll для тестирования мышью
     let isDown = false, startX, scrollLeftVal;
     processStage.addEventListener('mousedown', (e) => {
       isDown = true;
-      processStage.style.scrollBehavior = 'auto'; 
+      processStage.style.scrollBehavior = 'auto';
       processStage.style.scrollSnapType = 'none'; // Отключаем примагничивание во время перетаскивания
       startX = e.pageX - processStage.offsetLeft;
       scrollLeftVal = processStage.scrollLeft;
@@ -837,7 +837,7 @@ if (burger && mobileNavLinks) {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - processStage.offsetLeft;
-      const walk = (x - startX) * 2; 
+      const walk = (x - startX) * 2;
       processStage.scrollLeft = scrollLeftVal - walk;
     });
 
@@ -848,16 +848,16 @@ if (burger && mobileNavLinks) {
 /* ════════════════════════════════════════════
    PRICING DROPDOWNS SYNC
 ════════════════════════════════════════════ */
-(function() {
+(function () {
   const details = document.querySelectorAll('.pricing__details');
   const summaries = document.querySelectorAll('.pricing__details summary');
-  
+
   summaries.forEach(summary => {
     summary.addEventListener('click', (e) => {
       e.preventDefault();
       const parent = summary.parentElement;
       const willOpen = !parent.hasAttribute('open');
-      
+
       details.forEach(d => {
         if (willOpen) {
           d.setAttribute('open', '');

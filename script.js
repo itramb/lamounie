@@ -165,7 +165,7 @@ if (carouselTrack) {
 const PROJECTS = [
   {
     project: 'project1',
-    desc: 'Проект спальни 22,8 м² в загородном доме для девушки. Визуализатор: Бойко Анастасия',
+    desc: 'Проект спальни 22,8 м² в загородном доме для девушки Визуализатор: Бойко Анастасия',
     photos: [
       'images/project1/1_1.jpg',
       'images/project1/1_2.jpg',
@@ -176,7 +176,7 @@ const PROJECTS = [
   },
   {
     project: 'project2',
-    desc: 'Проект кухни-гостиной 42 м² в двухуровневой квартире для семьи с тремя детьми. Визуализатор: Бойко Анастасия',
+    desc: 'Проект кухни-гостиной 42 м² в двухуровневой квартире для семьи с тремя детьми Визуализатор: Бойко Анастасия',
     photos: [
       'images/project2/2_1.jpg',
       'images/project2/2_2.jpg',
@@ -187,7 +187,7 @@ const PROJECTS = [
   },
   {
     project: 'project3',
-    desc: 'Проект гостевого санузла 4 м² в двухуровневой квартире. Визуализатор: Бойко Анастасия',
+    desc: 'Проект спальни 22,8 м² в загородном доме для деловой женщины Визуализатор: Бойко Анастасия',
     photos: [
       'images/project3/3_1.jpg',
       'images/project3/3_2.jpg',
@@ -197,7 +197,7 @@ const PROJECTS = [
   },
   {
     project: 'project4',
-    desc: 'Проект спальни 15,5 м² в квартире для молодой пары. Визуализатор: Бойко Анастасия',
+    desc: 'Проект спальни 15,5 м² в квартире для молодой пары Визуализатор: Бойко Анастасия',
     photos: [
       'images/project4/4_1.jpg',
       'images/project4/4_2.jpg',
@@ -207,7 +207,7 @@ const PROJECTS = [
   },
   {
     project: 'project5',
-    desc: 'Проект ванной комнаты 4,8 м² в загородном доме для девочек. Визуализатор: Бойко Анастасия',
+    desc: 'Проект ванной комнаты 4,8 м² в таунхаусе для девочек Визуализатор: Бойко Анастасия',
     photos: [
       'images/project5/5_1.jpg',
       'images/project5/5_2.jpg',
@@ -218,7 +218,7 @@ const PROJECTS = [
   },
   {
     project: 'project6',
-    desc: 'Проект гостевой комнаты 13,7 м² в загородном доме. Визуализатор: Бойко Анастасия',
+    desc: 'Проект гостевой комнаты 13,7 м² в таунхаусе Визуализатор: Бойко Анастасия',
     photos: [
       'images/project6/6_1.jpg',
       'images/project6/6_2.jpg',
@@ -230,7 +230,7 @@ const PROJECTS = [
   },
   {
     project: 'project7',
-    desc: 'Проект детской комнаты 16,7 м² в загородном доме для маленькой девочки. Визуализатор: Бойко Анастасия',
+    desc: 'Проект детской комнаты с «сырной» гардеробной 16,7 м² в таунхаусе для маленькой девочки Визуализатор: Бойко Анастасия',
     photos: [
       'images/project7/7_1.jpg',
       'images/project7/7_3.jpg',
@@ -243,7 +243,7 @@ const PROJECTS = [
   },
   {
     project: 'project8',
-    desc: 'Проект детской комнаты 19 м² в загородном доме для девочки. Визуализатор: Бойко Анастасия',
+    desc: 'Проект детской комнаты с гардеробной 19,1 м² в таунхаусе для девочки в нескольких вариантах Визуализатор: Бойко Анастасия',
     photos: [
       'images/project8/8_1.jpg',
       'images/project8/8_2.jpg',
@@ -253,6 +253,69 @@ const PROJECTS = [
       'images/project8/8_6.jpg',
     ]
   },
+  {
+    project: 'project9',
+    desc: 'Проект комнаты для подростка 14,3 м² в таунхаусе со своим собственным выходом на улицу Визуализатор: Бойко Анастасия',
+    photos: [
+      'images/project9/9_1.jpg', 'images/project9/9_2.jpg', 'images/project9/9_3.jpg', 'images/project9/9_4.jpg', 'images/project9/9_5.jpg', 'images/project9/9_6.jpg'
+    ]
+  },
+  {
+    project: 'project10',
+    desc: 'Проект гостевого санузла 3,8 м² в таунхаусе с выходом в душевую и технические зоны Визуализатор: Бойко Анастасия',
+    photos: [
+      'images/project10/10_1.jpg', 'images/project10/10_2.jpg', 'images/project10/10_3.jpg'
+    ]
+  },
+  {
+    project: 'project11',
+    desc: 'Проект мастер-спальни 22,2 м² в таунхаусе, предложены разные цветовые решения Визуализатор: Бойко Анастасия',
+    photos: [
+      'images/project11/11_1.jpg', 'images/project11/11_2.jpg', 'images/project11/11_3.jpg', 'images/project11/11_4.jpg', 'images/project11/11_5.jpg', 'images/project11/11_6.jpg', 'images/project11/11_7.jpg', 'images/project11/11_8.jpg', 'images/project11/11_9.jpg'
+    ]
+  },
+  {
+    project: 'project12',
+    desc: 'Проект невероятной гардеробной комнаты, соединяющего спальню и санузел, 11,6 м² Визуализатор: Бойко Анастасия',
+    photos: [
+      'images/project12/12_1.jpg', 'images/project12/12_2.jpg', 'images/project12/12_3.jpg', 'images/project12/12_4.jpg'
+    ]
+  },
+  {
+    project: 'project13',
+    desc: 'Проект мастер-санузла 8,6 м² в разных цветовых гаммах Визуализатор: Бойко Анастасия',
+    photos: [
+      'images/project13/13_1.jpg', 'images/project13/13_2.jpg', 'images/project13/13_3.jpg', 'images/project13/13_4.jpg', 'images/project13/13_5.jpg', 'images/project13/13_6.jpg'
+    ]
+  },
+  {
+    project: 'project14',
+    desc: 'Проект кухни-гостиной 43,1 м² в таунхаусе для семейной пары с маленькими детьми Визуализатор: Бойко Анастасия',
+    photos: [
+      'images/project14/14_1.jpg', 'images/project14/14_2.jpg', 'images/project14/14_3.jpg', 'images/project14/14_4.jpg', 'images/project14/14_5.jpg', 'images/project14/14_6.jpg'
+    ]
+  },
+  {
+    project: 'project15',
+    desc: 'Проект комнаты для мальчика-подростка 12,5 м² в квартире с собственным санузлом 3,6 м² Визуализатор: Бойко Анастасия',
+    photos: [
+      'images/project15/15_1.jpg', 'images/project15/15_2.jpg', 'images/project15/15_3.jpg', 'images/project15/15_4.jpg', 'images/project15/15_5.jpg', 'images/project15/15_6.jpg', 'images/project15/15_7.jpg', 'images/project15/15_8.jpg'
+    ]
+  },
+  {
+    project: 'project16',
+    desc: 'Проект ванной комнаты 4,9 м² в квартире с акцентным декором Визуализатор: Бойко Анастасия',
+    photos: [
+      'images/project16/16_1.jpg', 'images/project16/16_2.jpg', 'images/project16/16_3.jpg', 'images/project16/16_4.jpg', 'images/project16/16_5.jpg'
+    ]
+  },
+  {
+    project: 'project17',
+    desc: 'Проект прихожей, кухни-столовой и гостиной 4,9 м² в квартире для семьи Визуализатор: Бойко Анастасия',
+    photos: [
+      'images/project17/17_1.jpg', 'images/project17/17_2.jpg', 'images/project17/17_3.jpg', 'images/project17/17_4.jpg', 'images/project17/17_5.jpg', 'images/project17/17_6.jpg', 'images/project17/17_7.jpg', 'images/project17/17_8.jpg', 'images/project17/17_9.jpg', 'images/project17/17_10.jpg', 'images/project17/17_11.jpg'
+    ]
+  }
 ];
 
 
@@ -277,7 +340,10 @@ function openLightbox(projectId, startIndex) {
   currentIndex  = startIndex || 0;
   // Показываем описание проекта
   const desc = document.getElementById('lightboxDesc');
-  if (desc) desc.textContent = project.desc || '';
+  if (desc) {
+    const text = project.desc || '';
+    desc.innerHTML = text.replace(/ Визуализатор:/, '<br>Визуализатор:');
+  }
   renderThumbs();
   showPhoto(currentIndex);
   lightbox.classList.add('open');
@@ -458,9 +524,21 @@ async function sendToTelegram(name, phone, contactWay) {
 
 const form    = document.getElementById('contactForm');
 const success = document.getElementById('formSuccess');
+const errorMsg = document.getElementById('formError');
+
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    form.classList.add('form--submitted');
+    
+    if (!form.checkValidity()) {
+      if(errorMsg) errorMsg.classList.add('visible');
+      if(success) success.classList.remove('visible');
+      return;
+    }
+    
+    if(errorMsg) errorMsg.classList.remove('visible');
+
     const name       = form.querySelector('[name="name"]').value.trim();
     const phone      = form.querySelector('[name="phone"]').value.trim();
     const wayEl      = form.querySelector('[name="contact_way"]:checked');
@@ -469,8 +547,9 @@ if (form) {
     await sendToTelegram(name, phone, contactWay);
 
     form.reset();
-    success.classList.add('visible');
-    setTimeout(() => success.classList.remove('visible'), 5000);
+    form.classList.remove('form--submitted');
+    if(success) success.classList.add('visible');
+    setTimeout(() => { if(success) success.classList.remove('visible'); }, 5000);
   });
 }
 
@@ -617,3 +696,103 @@ if (burger && mobileNavLinks) {
   });
 }
 
+
+
+/* ════════════════════════════════════════════
+   PROCESS SLIDER
+════════════════════════════════════════════ */
+(function   () {
+  const processStage = document.getElementById('processStage');
+  const processDotsArray = document.querySelectorAll('.process__dot');
+  const processPrev = document.getElementById('processPrev');
+  const processNext = document.getElementById('processNext');
+
+  if (processStage) {
+    const pCards = Array.from(processStage.querySelectorAll('.process__card'));
+    if (!pCards.length) return;
+    
+    function updateProcessDots() {
+      const scrollLeft = processStage.scrollLeft;
+      const cardWidth  = pCards[0].offsetWidth; 
+      const active     = Math.round(scrollLeft / cardWidth);
+      processDotsArray.forEach((d, i) => {
+        d.classList.toggle('process__dot--active', i === active);
+      });
+      if(processPrev) processPrev.disabled = active === 0;
+      if(processNext) processNext.disabled = active === pCards.length - 1;
+    }
+    
+    processStage.addEventListener('scroll', updateProcessDots, { passive: true });
+    window.addEventListener('resize', updateProcessDots);
+
+    processDotsArray.forEach(function (d, i) {
+      d.addEventListener('click', function () {
+        processStage.scrollTo({ left: pCards[i].offsetLeft, behavior: 'smooth' });
+      });
+    });
+
+    if(processPrev) {
+      processPrev.addEventListener('click', function() {
+        processStage.scrollBy({ left: -(pCards[0].offsetWidth), behavior: 'smooth' });
+      });
+    }
+    if(processNext) {
+      processNext.addEventListener('click', function() {
+        processStage.scrollBy({ left: pCards[0].offsetWidth, behavior: 'smooth' });
+      });
+    }
+    
+    // Drag-to-scroll для тестирования мышью
+    let isDown = false, startX, scrollLeftVal;
+    processStage.addEventListener('mousedown', (e) => {
+      isDown = true;
+      processStage.style.scrollBehavior = 'auto'; 
+      processStage.style.scrollSnapType = 'none'; // Отключаем примагничивание во время перетаскивания
+      startX = e.pageX - processStage.offsetLeft;
+      scrollLeftVal = processStage.scrollLeft;
+    });
+    processStage.addEventListener('mouseleave', () => {
+      isDown = false;
+      processStage.style.scrollBehavior = 'smooth';
+      processStage.style.scrollSnapType = 'x mandatory';
+    });
+    processStage.addEventListener('mouseup', () => {
+      isDown = false;
+      processStage.style.scrollBehavior = 'smooth';
+      processStage.style.scrollSnapType = 'x mandatory';
+    });
+    processStage.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - processStage.offsetLeft;
+      const walk = (x - startX) * 2; 
+      processStage.scrollLeft = scrollLeftVal - walk;
+    });
+
+    updateProcessDots();
+  }
+}());
+
+/* ════════════════════════════════════════════
+   PRICING DROPDOWNS SYNC
+════════════════════════════════════════════ */
+(function() {
+  const details = document.querySelectorAll('.pricing__details');
+  const summaries = document.querySelectorAll('.pricing__details summary');
+  
+  summaries.forEach(summary => {
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+      const parent = summary.parentElement;
+      const willOpen = !parent.hasAttribute('open');
+      
+      details.forEach(d => {
+        if (willOpen) {
+          d.setAttribute('open', '');
+        } else {
+          d.removeAttribute('open');
+        }
+      });
+    });
+  });
+}());

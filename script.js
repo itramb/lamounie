@@ -373,14 +373,86 @@ function renderThumbs() {
     img.src = src;
     img.alt = '';
     img.className = 'lightbox__thumb';
+    img.draggable = false;
     img.addEventListener('click', (e) => { e.stopPropagation(); showPhoto(i); });
     lbThumbs.appendChild(img);
   });
 }
 
+/* Скролл миниатюр мышью и колесиком (для десктопа) */
+let isThumbDown = false;
+let thumbStartX, thumbScrollLeftVal;
+
+lbThumbs.addEventListener('mousedown', (e) => {
+  isThumbDown = true;
+  lbThumbs.style.scrollBehavior = 'auto';
+  thumbStartX = e.pageX - lbThumbs.offsetLeft;
+  thumbScrollLeftVal = lbThumbs.scrollLeft;
+});
+lbThumbs.addEventListener('mouseleave', () => { isThumbDown = false; lbThumbs.style.scrollBehavior = 'smooth'; });
+lbThumbs.addEventListener('mouseup', () => { isThumbDown = false; lbThumbs.style.scrollBehavior = 'smooth'; });
+lbThumbs.addEventListener('mousemove', (e) => {
+  if (!isThumbDown) return;
+  e.preventDefault();
+  const x = e.pageX - lbThumbs.offsetLeft;
+  const walk = (x - thumbStartX) * 1.5;
+  lbThumbs.scrollLeft = thumbScrollLeftVal - walk;
+});
+
 document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('click', () => openLightbox(card.dataset.project, 0));
 });
+
+/* Свайп больших полноразмерных фото */
+let lbDragStartX = 0;
+let lbIsDraggingImg = false;
+
+function onLbDragStart(x) {
+  lbDragStartX = x;
+  lbIsDraggingImg = true;
+}
+
+function onLbDragEnd(x) {
+  if (!lbIsDraggingImg) return;
+  lbIsDraggingImg = false;
+  const diff = lbDragStartX - x;
+  if (diff > 50) showPhoto(currentIndex + 1);
+  else if (diff < -50) showPhoto(currentIndex - 1);
+}
+
+lbImg.addEventListener('mousedown', (e) => {
+  e.preventDefault(); // Убираем нативный "drag image"
+  onLbDragStart(e.pageX);
+});
+lbImg.addEventListener('mouseup', (e) => onLbDragEnd(e.pageX));
+lbImg.addEventListener('mouseleave', (e) => { if (lbIsDraggingImg) onLbDragEnd(e.pageX); });
+
+lbImg.addEventListener('touchstart', (e) => onLbDragStart(e.touches[0].pageX), { passive: true });
+lbImg.addEventListener('touchend', (e) => onLbDragEnd(e.changedTouches[0].pageX));
+
+/* Трекпад: свайп двумя пальцами */
+let lbWheelAccumX = 0;
+let lbWheelCooldown = false;
+let lbWheelResetTimer;
+
+lbImg.addEventListener('wheel', (e) => {
+  if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+    e.preventDefault();
+    if (lbWheelCooldown) return;
+    
+    lbWheelAccumX += e.deltaX;
+    
+    clearTimeout(lbWheelResetTimer);
+    lbWheelResetTimer = setTimeout(() => lbWheelAccumX = 0, 300);
+    
+    if (Math.abs(lbWheelAccumX) > 60) {
+      showPhoto(lbWheelAccumX > 0 ? currentIndex + 1 : currentIndex - 1);
+      lbWheelAccumX = 0;
+      lbWheelCooldown = true;
+      setTimeout(() => lbWheelCooldown = false, 500);
+    }
+  }
+}, { passive: false });
 
 lbClose.addEventListener('click', closeLightbox);
 lbBackdrop.addEventListener('click', closeLightbox);

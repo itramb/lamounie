@@ -527,14 +527,38 @@ img { display: block; width: 100%; object-fit: cover; }
   flex: 1;
   display: flex;
   justify-content: center;
+  justify-content: safe center;
   gap: 6px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  padding: 0 0.3rem;
+  padding: 0 0.3rem 0.6rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.4) transparent;
 }
 
-.lightbox__thumbs::-webkit-scrollbar { display: none; }
+.lightbox__thumbs::-webkit-scrollbar {
+  height: 6px;
+}
+.lightbox__thumbs::-webkit-scrollbar-track {
+  background: transparent;
+}
+.lightbox__thumbs::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+.lightbox__thumbs::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .lightbox__thumbs {
+    padding-bottom: 0;
+  }
+  .lightbox__thumbs::-webkit-scrollbar {
+    display: none;
+  }
+}
 
 .lightbox__thumb {
   flex-shrink: 0;
@@ -1018,9 +1042,7 @@ img { display: block; width: 100%; object-fit: cover; }
     width: 100%;
   }
 
-  .about-gallery__viewport {
-    /* Удалено жесткое соотношение сторон для мобильных */
-  }
+  /* Удалено жесткое соотношение сторон для мобильных */
 
   .about-gallery__btn {
     display: none;
